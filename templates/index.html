@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Stations Israel</title>
+    <style>
+        body {
+            text-align: center; /* Center text */
+            font-family: Arial, sans-serif; /* Stylish font */
+        }
+        .station {
+            margin: 20px;
+            padding: 20px;
+            border: 5px solid; /* Border for the changing color */
+            display: inline-block; /* Align the block center */
+            width: 300px; /* Fixed width */
+            box-shadow: 0px 0px 10px #000; /* Shadow for fanciness */
+            animation: border-fade 10s infinite; /* Animation for the border color */
+        }
+        @keyframes border-fade {
+            0% { border-color: red; }
+            25% { border-color: blue; }
+            50% { border-color: green; }
+            75% { border-color: yellow; }
+            100% { border-color: red; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Listen to Radio Stations in Israel</h1>
+    {% for station_name, stream_url in radio_stations.items() %}
+        <div class="station">
+            <h2>{{ station_name }}</h2>
+            <audio controls>
+                <source src="{{ stream_url }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    {% endfor %}
+</body>
+</html>
